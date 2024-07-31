@@ -1,0 +1,6 @@
+{
+  "title": "ClearCache Request",
+  "type": "object",
+  "properties": {},
+  "additionalProperties": false
+}

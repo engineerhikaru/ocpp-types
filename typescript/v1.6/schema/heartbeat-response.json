@@ -1,0 +1,12 @@
+{
+  "title": "Heartbeat Response",
+  "type": "object",
+  "properties": {
+    "currentTime": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["currentTime"]
+}

@@ -1,0 +1,11 @@
+{
+  "title": "GetLocalListVersion Response",
+  "type": "object",
+  "properties": {
+    "listVersion": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["listVersion"]
+}

@@ -1,0 +1,16 @@
+{
+  "title": "ChangeConfiguration Request",
+  "type": "object",
+  "properties": {
+    "key": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "value": {
+      "type": "string",
+      "maxLength": 500
+    }
+  },
+  "additionalProperties": false,
+  "required": ["key", "value"]
+}

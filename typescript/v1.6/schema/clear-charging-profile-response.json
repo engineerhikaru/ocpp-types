@@ -1,0 +1,12 @@
+{
+  "title": "ClearChargingProfile Response",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["Accepted", "Unknown"]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["status"]
+}

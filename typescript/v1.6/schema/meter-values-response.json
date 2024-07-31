@@ -1,0 +1,6 @@
+{
+  "title": "MeterValues Response",
+  "type": "object",
+  "properties": {},
+  "additionalProperties": false
+}

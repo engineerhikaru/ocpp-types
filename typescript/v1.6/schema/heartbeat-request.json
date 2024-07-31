@@ -1,0 +1,6 @@
+{
+  "title": "Heartbeat Request",
+  "type": "object",
+  "properties": {},
+  "additionalProperties": false
+}

@@ -1,0 +1,6 @@
+{
+  "title": "UpdateFirmware Response",
+  "type": "object",
+  "properties": {},
+  "additionalProperties": false
+}

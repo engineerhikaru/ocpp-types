@@ -1,0 +1,15 @@
+{
+  "title": "DataTransfer Response",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["Accepted", "Rejected", "UnknownMessageId", "UnknownVendorId"]
+    },
+    "data": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["status"]
+}

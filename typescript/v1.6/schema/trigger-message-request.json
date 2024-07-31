@@ -1,0 +1,22 @@
+{
+  "title": "TriggerMessage Request",
+  "type": "object",
+  "properties": {
+    "requestedMessage": {
+      "type": "string",
+      "enum": [
+        "BootNotification",
+        "DiagnosticsStatusNotification",
+        "FirmwareStatusNotification",
+        "Heartbeat",
+        "MeterValues",
+        "StatusNotification"
+      ]
+    },
+    "connectorId": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["requestedMessage"]
+}

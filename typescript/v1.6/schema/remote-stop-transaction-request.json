@@ -1,0 +1,11 @@
+{
+  "title": "RemoteStopTransaction Request",
+  "type": "object",
+  "properties": {
+    "transactionId": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["transactionId"]
+}

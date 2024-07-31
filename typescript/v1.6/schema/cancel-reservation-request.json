@@ -1,0 +1,11 @@
+{
+  "title": "CancelReservation Request",
+  "type": "object",
+  "properties": {
+    "reservationId": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["reservationId"]
+}

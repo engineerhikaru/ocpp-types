@@ -1,0 +1,6 @@
+{
+  "title": "GetLocalListVersion Request",
+  "type": "object",
+  "properties": {},
+  "additionalProperties": false
+}

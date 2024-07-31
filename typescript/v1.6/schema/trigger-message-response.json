@@ -1,0 +1,12 @@
+{
+  "title": "TriggerMessage Response",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": ["Accepted", "Rejected", "NotImplemented"]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["status"]
+}

@@ -1,0 +1,11 @@
+{
+  "title": "UnlockConnector Request",
+  "type": "object",
+  "properties": {
+    "connectorId": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["connectorId"]
+}

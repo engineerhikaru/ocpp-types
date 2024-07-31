@@ -1,0 +1,11 @@
+{
+  "title": "GetDiagnostics Response",
+  "type": "object",
+  "properties": {
+    "fileName": {
+      "type": "string",
+      "maxLength": 255
+    }
+  },
+  "additionalProperties": false
+}

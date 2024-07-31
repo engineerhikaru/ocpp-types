@@ -1,0 +1,6 @@
+{
+  "title": "DiagnosticsStatusNotification Response",
+  "type": "object",
+  "properties": {},
+  "additionalProperties": false
+}
