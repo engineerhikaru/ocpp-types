@@ -1,0 +1,29 @@
+{
+  "name": "ocpp-types",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "OCPP",
+    "OCPP 1.6",
+    "OCPP 2.0.1",
+    "1.6",
+    "2.0.1",
+    "typescript"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/engineerhikaru/ocpp-types.git"
+  },
+  "license": "MIT",
+  "author": "engineerhikaru",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  }
+}
