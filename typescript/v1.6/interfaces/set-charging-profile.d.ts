@@ -1,6 +1,6 @@
 export interface SetChargingProfileRequest {
   connectorId: number;
-  chargingProfile?: {
+  csChargingProfiles: {
     chargingProfileId: number;
     transactionId?: number;
     stackLevel: number;
@@ -9,7 +9,7 @@ export interface SetChargingProfileRequest {
     recurrencyKind?: 'Daily' | 'Weekly';
     validFrom?: string;
     validTo?: string;
-    csChargingProfiles: {
+    chargingSchedule: {
       duration?: number;
       startSchedule?: string;
       chargingRateUnit: 'A' | 'W';
