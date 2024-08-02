@@ -1,0 +1,252 @@
+{
+  "title": "SendLocalList Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "localAuthorizationList": {
+      "type": "array",
+      "additionalItems": false,
+      "items": {
+        "type": "object",
+        "properties": {
+          "customData": {
+            "type": "object",
+            "properties": {
+              "vendorId": {
+                "type": "string",
+                "maxLength": 255
+              }
+            },
+            "required": ["vendorId"]
+          },
+          "idToken": {
+            "type": "object",
+            "properties": {
+              "customData": {
+                "type": "object",
+                "properties": {
+                  "vendorId": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "required": ["vendorId"]
+              },
+              "additionalInfo": {
+                "type": "array",
+                "additionalItems": false,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "customData": {
+                      "type": "object",
+                      "properties": {
+                        "vendorId": {
+                          "type": "string",
+                          "maxLength": 255
+                        }
+                      },
+                      "required": ["vendorId"]
+                    },
+                    "additionalIdToken": {
+                      "type": "string",
+                      "maxLength": 36
+                    },
+                    "type": {
+                      "type": "string",
+                      "maxLength": 50
+                    }
+                  },
+                  "required": ["additionalIdToken", "type"]
+                },
+                "minItems": 1
+              },
+              "idToken": {
+                "type": "string",
+                "maxLength": 36
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "Central",
+                  "eMAID",
+                  "ISO14443",
+                  "ISO15693",
+                  "KeyCode",
+                  "Local",
+                  "MacAddress",
+                  "NoAuthorization"
+                ]
+              }
+            },
+            "required": ["idToken", "type"]
+          },
+          "idTokenInfo": {
+            "type": "object",
+            "properties": {
+              "customData": {
+                "type": "object",
+                "properties": {
+                  "vendorId": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "required": ["vendorId"]
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "Accepted",
+                  "Blocked",
+                  "ConcurrentTx",
+                  "Expired",
+                  "Invalid",
+                  "NoCredit",
+                  "NotAllowedTypeEVSE",
+                  "NotAtThisLocation",
+                  "NotAtThisTime",
+                  "Unknown"
+                ]
+              },
+              "cacheExpiryDateTime": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "chargingPriority": {
+                "type": "integer"
+              },
+              "language1": {
+                "type": "string",
+                "maxLength": 8
+              },
+              "evseId": {
+                "type": "array",
+                "additionalItems": false,
+                "items": {
+                  "type": "integer"
+                },
+                "minItems": 1
+              },
+              "groupIdToken": {
+                "type": "object",
+                "properties": {
+                  "customData": {
+                    "type": "object",
+                    "properties": {
+                      "vendorId": {
+                        "type": "string",
+                        "maxLength": 255
+                      }
+                    },
+                    "required": ["vendorId"]
+                  },
+                  "additionalInfo": {
+                    "type": "array",
+                    "additionalItems": false,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "customData": {
+                          "type": "object",
+                          "properties": {
+                            "vendorId": {
+                              "type": "string",
+                              "maxLength": 255
+                            }
+                          },
+                          "required": ["vendorId"]
+                        },
+                        "additionalIdToken": {
+                          "type": "string",
+                          "maxLength": 36
+                        },
+                        "type": {
+                          "type": "string",
+                          "maxLength": 50
+                        }
+                      },
+                      "required": ["additionalIdToken", "type"]
+                    },
+                    "minItems": 1
+                  },
+                  "idToken": {
+                    "type": "string",
+                    "maxLength": 36
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "Central",
+                      "eMAID",
+                      "ISO14443",
+                      "ISO15693",
+                      "KeyCode",
+                      "Local",
+                      "MacAddress",
+                      "NoAuthorization"
+                    ]
+                  }
+                },
+                "required": ["idToken", "type"]
+              },
+              "language2": {
+                "type": "string",
+                "maxLength": 8
+              },
+              "personalMessage": {
+                "type": "object",
+                "properties": {
+                  "customData": {
+                    "type": "object",
+                    "properties": {
+                      "vendorId": {
+                        "type": "string",
+                        "maxLength": 255
+                      }
+                    },
+                    "required": ["vendorId"]
+                  },
+                  "format": {
+                    "type": "string",
+                    "enum": ["ASCII", "HTML", "URI", "UTF8"]
+                  },
+                  "language": {
+                    "type": "string",
+                    "maxLength": 8
+                  },
+                  "content": {
+                    "type": "string",
+                    "maxLength": 512
+                  }
+                },
+                "required": ["format", "content"]
+              }
+            },
+            "required": ["status"]
+          }
+        },
+        "required": ["idToken"]
+      },
+      "minItems": 1
+    },
+    "versionNumber": {
+      "type": "integer"
+    },
+    "updateType": {
+      "type": "string",
+      "enum": ["Differential", "Full"]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["versionNumber", "updateType"]
+}

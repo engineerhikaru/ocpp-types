@@ -1,0 +1,114 @@
+{
+  "title": "GetVariables Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "getVariableData": {
+      "type": "array",
+      "additionalItems": false,
+      "items": {
+        "type": "object",
+        "properties": {
+          "customData": {
+            "type": "object",
+            "properties": {
+              "vendorId": {
+                "type": "string",
+                "maxLength": 255
+              }
+            },
+            "required": ["vendorId"]
+          },
+          "attributeType": {
+            "type": "string",
+            "default": "Actual",
+            "enum": ["Actual", "Target", "MinSet", "MaxSet"]
+          },
+          "component": {
+            "type": "object",
+            "properties": {
+              "customData": {
+                "type": "object",
+                "properties": {
+                  "vendorId": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "required": ["vendorId"]
+              },
+              "evse": {
+                "type": "object",
+                "properties": {
+                  "customData": {
+                    "type": "object",
+                    "properties": {
+                      "vendorId": {
+                        "type": "string",
+                        "maxLength": 255
+                      }
+                    },
+                    "required": ["vendorId"]
+                  },
+                  "id": {
+                    "type": "integer"
+                  },
+                  "connectorId": {
+                    "type": "integer"
+                  }
+                },
+                "required": ["id"]
+              },
+              "name": {
+                "type": "string",
+                "maxLength": 50
+              },
+              "instance": {
+                "type": "string",
+                "maxLength": 50
+              }
+            },
+            "required": ["name"]
+          },
+          "variable": {
+            "type": "object",
+            "properties": {
+              "customData": {
+                "type": "object",
+                "properties": {
+                  "vendorId": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "required": ["vendorId"]
+              },
+              "name": {
+                "type": "string",
+                "maxLength": 50
+              },
+              "instance": {
+                "type": "string",
+                "maxLength": 50
+              }
+            },
+            "required": ["name"]
+          }
+        },
+        "required": ["component", "variable"]
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false,
+  "required": ["getVariableData"]
+}

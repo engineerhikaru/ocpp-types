@@ -1,0 +1,154 @@
+{
+  "title": "SetVariableMonitoring Response",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "setMonitoringResult": {
+      "type": "array",
+      "additionalItems": false,
+      "items": {
+        "type": "object",
+        "properties": {
+          "customData": {
+            "type": "object",
+            "properties": {
+              "vendorId": {
+                "type": "string",
+                "maxLength": 255
+              }
+            },
+            "required": ["vendorId"]
+          },
+          "id": {
+            "type": "integer"
+          },
+          "statusInfo": {
+            "type": "object",
+            "properties": {
+              "customData": {
+                "type": "object",
+                "properties": {
+                  "vendorId": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "required": ["vendorId"]
+              },
+              "reasonCode": {
+                "type": "string",
+                "maxLength": 20
+              },
+              "additionalInfo": {
+                "type": "string",
+                "maxLength": 512
+              }
+            },
+            "required": ["reasonCode"]
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "Accepted",
+              "UnknownComponent",
+              "UnknownVariable",
+              "UnsupportedMonitorType",
+              "Rejected",
+              "Duplicate"
+            ]
+          },
+          "type": {
+            "type": "string",
+            "enum": ["UpperThreshold", "LowerThreshold", "Delta", "Periodic", "PeriodicClockAligned"]
+          },
+          "component": {
+            "type": "object",
+            "properties": {
+              "customData": {
+                "type": "object",
+                "properties": {
+                  "vendorId": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "required": ["vendorId"]
+              },
+              "evse": {
+                "type": "object",
+                "properties": {
+                  "customData": {
+                    "type": "object",
+                    "properties": {
+                      "vendorId": {
+                        "type": "string",
+                        "maxLength": 255
+                      }
+                    },
+                    "required": ["vendorId"]
+                  },
+                  "id": {
+                    "type": "integer"
+                  },
+                  "connectorId": {
+                    "type": "integer"
+                  }
+                },
+                "required": ["id"]
+              },
+              "name": {
+                "type": "string",
+                "maxLength": 50
+              },
+              "instance": {
+                "type": "string",
+                "maxLength": 50
+              }
+            },
+            "required": ["name"]
+          },
+          "variable": {
+            "type": "object",
+            "properties": {
+              "customData": {
+                "type": "object",
+                "properties": {
+                  "vendorId": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "required": ["vendorId"]
+              },
+              "name": {
+                "type": "string",
+                "maxLength": 50
+              },
+              "instance": {
+                "type": "string",
+                "maxLength": 50
+              }
+            },
+            "required": ["name"]
+          },
+          "severity": {
+            "type": "integer"
+          }
+        },
+        "required": ["status", "type", "severity", "component", "variable"]
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false,
+  "required": ["setMonitoringResult"]
+}

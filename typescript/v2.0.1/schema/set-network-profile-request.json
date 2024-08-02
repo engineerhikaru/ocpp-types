@@ -1,0 +1,142 @@
+{
+  "title": "SetNetworkProfile Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "configurationSlot": {
+      "type": "integer"
+    },
+    "connectionData": {
+      "type": "object",
+      "properties": {
+        "customData": {
+          "type": "object",
+          "properties": {
+            "vendorId": {
+              "type": "string",
+              "maxLength": 255
+            }
+          },
+          "required": ["vendorId"]
+        },
+        "apn": {
+          "type": "object",
+          "properties": {
+            "customData": {
+              "type": "object",
+              "properties": {
+                "vendorId": {
+                  "type": "string",
+                  "maxLength": 255
+                }
+              },
+              "required": ["vendorId"]
+            },
+            "apn": {
+              "type": "string",
+              "maxLength": 512
+            },
+            "apnUserName": {
+              "type": "string",
+              "maxLength": 20
+            },
+            "apnPassword": {
+              "type": "string",
+              "maxLength": 20
+            },
+            "simPin": {
+              "type": "integer"
+            },
+            "preferredNetwork": {
+              "type": "string",
+              "maxLength": 6
+            },
+            "useOnlyPreferredNetwork": {
+              "type": "boolean",
+              "default": false
+            },
+            "apnAuthentication": {
+              "type": "string",
+              "enum": ["CHAP", "NONE", "PAP", "AUTO"]
+            }
+          },
+          "required": ["apn", "apnAuthentication"]
+        },
+        "ocppVersion": {
+          "type": "string",
+          "enum": ["OCPP12", "OCPP15", "OCPP16", "OCPP20"]
+        },
+        "ocppTransport": {
+          "type": "string",
+          "enum": ["JSON", "SOAP"]
+        },
+        "ocppCsmsUrl": {
+          "type": "string",
+          "maxLength": 512
+        },
+        "messageTimeout": {
+          "type": "integer"
+        },
+        "securityProfile": {
+          "type": "integer"
+        },
+        "ocppInterface": {
+          "type": "string",
+          "enum": ["Wired0", "Wired1", "Wired2", "Wired3", "Wireless0", "Wireless1", "Wireless2", "Wireless3"]
+        },
+        "vpn": {
+          "type": "object",
+          "properties": {
+            "customData": {
+              "type": "object",
+              "properties": {
+                "vendorId": {
+                  "type": "string",
+                  "maxLength": 255
+                }
+              },
+              "required": ["vendorId"]
+            },
+            "server": {
+              "type": "string",
+              "maxLength": 512
+            },
+            "user": {
+              "type": "string",
+              "maxLength": 20
+            },
+            "group": {
+              "type": "string",
+              "maxLength": 20
+            },
+            "password": {
+              "type": "string",
+              "maxLength": 20
+            },
+            "key": {
+              "type": "string",
+              "maxLength": 255
+            },
+            "type": {
+              "type": "string",
+              "enum": ["IKEv2", "IPSec", "L2TP", "PPTP"]
+            }
+          },
+          "required": ["server", "user", "password", "key", "type"]
+        }
+      },
+      "required": ["ocppVersion", "ocppTransport", "ocppCsmsUrl", "messageTimeout", "securityProfile", "ocppInterface"]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["configurationSlot", "connectionData"]
+}

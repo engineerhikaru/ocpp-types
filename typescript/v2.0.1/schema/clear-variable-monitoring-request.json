@@ -1,0 +1,25 @@
+{
+  "title": "ClearVariableMonitoring Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "id": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false,
+  "required": ["id"]
+}

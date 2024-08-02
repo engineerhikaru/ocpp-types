@@ -1,0 +1,50 @@
+{
+  "title": "DeleteCertificate Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "certificateHashData": {
+      "type": "object",
+      "properties": {
+        "customData": {
+          "type": "object",
+          "properties": {
+            "vendorId": {
+              "type": "string",
+              "maxLength": 255
+            }
+          },
+          "required": ["vendorId"]
+        },
+        "hashAlgorithm": {
+          "type": "string",
+          "enum": ["SHA256", "SHA384", "SHA512"]
+        },
+        "issuerNameHash": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "issuerKeyHash": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "serialNumber": {
+          "type": "string",
+          "maxLength": 40
+        }
+      },
+      "required": ["hashAlgorithm", "issuerNameHash", "issuerKeyHash", "serialNumber"]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["certificateHashData"]
+}

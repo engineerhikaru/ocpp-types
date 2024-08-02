@@ -1,0 +1,30 @@
+{
+  "title": "Get15118EVCertificate Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "iso15118SchemaVersion": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "action": {
+      "type": "string",
+      "enum": ["Install", "Update"]
+    },
+    "exiRequest": {
+      "type": "string",
+      "maxLength": 5600
+    }
+  },
+  "additionalProperties": false,
+  "required": ["iso15118SchemaVersion", "action", "exiRequest"]
+}

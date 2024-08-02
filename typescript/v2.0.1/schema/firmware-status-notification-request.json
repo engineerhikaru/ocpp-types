@@ -1,0 +1,40 @@
+{
+  "title": "FirmwareStatusNotification Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Downloaded",
+        "DownloadFailed",
+        "Downloading",
+        "DownloadScheduled",
+        "DownloadPaused",
+        "Idle",
+        "InstallationFailed",
+        "Installing",
+        "Installed",
+        "InstallRebooting",
+        "InstallScheduled",
+        "InstallVerificationFailed",
+        "InvalidSignature",
+        "SignatureVerified"
+      ]
+    },
+    "requestId": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["status"]
+}

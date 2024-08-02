@@ -1,0 +1,22 @@
+{
+  "title": "UnpublishFirmware Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "checksum": {
+      "type": "string",
+      "maxLength": 32
+    }
+  },
+  "additionalProperties": false,
+  "required": ["checksum"]
+}

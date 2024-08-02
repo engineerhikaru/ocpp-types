@@ -1,0 +1,160 @@
+{
+  "title": "NotifyMonitoringReport Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "monitor": {
+      "type": "array",
+      "additionalItems": false,
+      "items": {
+        "type": "object",
+        "properties": {
+          "customData": {
+            "type": "object",
+            "properties": {
+              "vendorId": {
+                "type": "string",
+                "maxLength": 255
+              }
+            },
+            "required": ["vendorId"]
+          },
+          "component": {
+            "type": "object",
+            "properties": {
+              "customData": {
+                "type": "object",
+                "properties": {
+                  "vendorId": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "required": ["vendorId"]
+              },
+              "evse": {
+                "type": "object",
+                "properties": {
+                  "customData": {
+                    "type": "object",
+                    "properties": {
+                      "vendorId": {
+                        "type": "string",
+                        "maxLength": 255
+                      }
+                    },
+                    "required": ["vendorId"]
+                  },
+                  "id": {
+                    "type": "integer"
+                  },
+                  "connectorId": {
+                    "type": "integer"
+                  }
+                },
+                "required": ["id"]
+              },
+              "name": {
+                "type": "string",
+                "maxLength": 50
+              },
+              "instance": {
+                "type": "string",
+                "maxLength": 50
+              }
+            },
+            "required": ["name"]
+          },
+          "variable": {
+            "type": "object",
+            "properties": {
+              "customData": {
+                "type": "object",
+                "properties": {
+                  "vendorId": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "required": ["vendorId"]
+              },
+              "name": {
+                "type": "string",
+                "maxLength": 50
+              },
+              "instance": {
+                "type": "string",
+                "maxLength": 50
+              }
+            },
+            "required": ["name"]
+          },
+          "variableMonitoring": {
+            "type": "array",
+            "additionalItems": false,
+            "items": {
+              "type": "object",
+              "properties": {
+                "customData": {
+                  "type": "object",
+                  "properties": {
+                    "vendorId": {
+                      "type": "string",
+                      "maxLength": 255
+                    }
+                  },
+                  "required": ["vendorId"]
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "transaction": {
+                  "type": "boolean"
+                },
+                "value": {
+                  "type": "number"
+                },
+                "type": {
+                  "type": "string",
+                  "enum": ["UpperThreshold", "LowerThreshold", "Delta", "Periodic", "PeriodicClockAligned"]
+                },
+                "severity": {
+                  "type": "integer"
+                }
+              },
+              "required": ["id", "transaction", "value", "type", "severity"]
+            },
+            "minItems": 1
+          }
+        },
+        "required": ["component", "variable", "variableMonitoring"]
+      },
+      "minItems": 1
+    },
+    "requestId": {
+      "type": "integer"
+    },
+    "tbc": {
+      "type": "boolean",
+      "default": false
+    },
+    "seqNo": {
+      "type": "integer"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["requestId", "seqNo", "generatedAt"]
+}

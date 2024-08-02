@@ -1,0 +1,22 @@
+{
+  "title": "SetMonitoringBase Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "monitoringBase": {
+      "type": "string",
+      "enum": ["All", "FactoryDefault", "HardWiredOnly"]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["monitoringBase"]
+}

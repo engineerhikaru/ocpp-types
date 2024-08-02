@@ -1,0 +1,25 @@
+{
+  "title": "GetBaseReport Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "requestId": {
+      "type": "integer"
+    },
+    "reportBase": {
+      "type": "string",
+      "enum": ["ConfigurationInventory", "FullInventory", "SummaryInventory"]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["requestId", "reportBase"]
+}

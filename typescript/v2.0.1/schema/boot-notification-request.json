@@ -1,0 +1,89 @@
+{
+  "title": "BootNotification Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "chargingStation": {
+      "type": "object",
+      "properties": {
+        "customData": {
+          "type": "object",
+          "properties": {
+            "vendorId": {
+              "type": "string",
+              "maxLength": 255
+            }
+          },
+          "required": ["vendorId"]
+        },
+        "serialNumber": {
+          "type": "string",
+          "maxLength": 25
+        },
+        "model": {
+          "type": "string",
+          "maxLength": 20
+        },
+        "modem": {
+          "type": "object",
+          "properties": {
+            "customData": {
+              "type": "object",
+              "properties": {
+                "vendorId": {
+                  "type": "string",
+                  "maxLength": 255
+                }
+              },
+              "required": ["vendorId"]
+            },
+            "iccid": {
+              "description": "Wireless_ Communication_ Module. ICCID. CI20_ Text\r\nurn:x-oca:ocpp:uid:1:569327\r\nThis contains the ICCID of the modem’s SIM card.\r\n",
+              "type": "string",
+              "maxLength": 20
+            },
+            "imsi": {
+              "description": "Wireless_ Communication_ Module. IMSI. CI20_ Text\r\nurn:x-oca:ocpp:uid:1:569328\r\nThis contains the IMSI of the modem’s SIM card.\r\n",
+              "type": "string",
+              "maxLength": 20
+            }
+          }
+        },
+        "vendorName": {
+          "type": "string",
+          "maxLength": 50
+        },
+        "firmwareVersion": {
+          "type": "string",
+          "maxLength": 50
+        }
+      },
+      "required": ["model", "vendorName"]
+    },
+    "reason": {
+      "type": "string",
+      "enum": [
+        "ApplicationReset",
+        "FirmwareUpdate",
+        "LocalReset",
+        "PowerUp",
+        "RemoteReset",
+        "ScheduledReset",
+        "Triggered",
+        "Unknown",
+        "Watchdog"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["reason", "chargingStation"]
+}

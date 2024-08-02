@@ -1,0 +1,30 @@
+{
+  "title": "SecurityEventNotification Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "type": {
+      "type": "string",
+      "maxLength": 50
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "techInfo": {
+      "type": "string",
+      "maxLength": 255
+    }
+  },
+  "additionalProperties": false,
+  "required": ["type", "timestamp"]
+}

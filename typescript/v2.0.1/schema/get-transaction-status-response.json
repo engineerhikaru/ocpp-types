@@ -1,0 +1,24 @@
+{
+  "title": "GetTransactionStatus Response",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "ongoingIndicator": {
+      "type": "boolean"
+    },
+    "messagesInQueue": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["messagesInQueue"]
+}

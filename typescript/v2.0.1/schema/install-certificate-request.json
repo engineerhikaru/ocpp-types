@@ -1,0 +1,26 @@
+{
+  "title": "InstallCertificate Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "certificateType": {
+      "type": "string",
+      "enum": ["V2GRootCertificate", "MORootCertificate", "CSMSRootCertificate", "ManufacturerRootCertificate"]
+    },
+    "certificate": {
+      "type": "string",
+      "maxLength": 5500
+    }
+  },
+  "additionalProperties": false,
+  "required": ["certificateType", "certificate"]
+}

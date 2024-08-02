@@ -1,0 +1,276 @@
+{
+  "title": "SetChargingProfile Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "evseId": {
+      "type": "integer"
+    },
+    "chargingProfile": {
+      "type": "object",
+      "properties": {
+        "customData": {
+          "type": "object",
+          "properties": {
+            "vendorId": {
+              "type": "string",
+              "maxLength": 255
+            }
+          },
+          "required": ["vendorId"]
+        },
+        "id": {
+          "type": "integer"
+        },
+        "stackLevel": {
+          "type": "integer"
+        },
+        "chargingProfilePurpose": {
+          "type": "string",
+          "enum": ["ChargingStationExternalConstraints", "ChargingStationMaxProfile", "TxDefaultProfile", "TxProfile"]
+        },
+        "chargingProfileKind": {
+          "type": "string",
+          "enum": ["Absolute", "Recurring", "Relative"]
+        },
+        "recurrencyKind": {
+          "type": "string",
+          "enum": ["Daily", "Weekly"]
+        },
+        "validFrom": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "validTo": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "chargingSchedule": {
+          "type": "array",
+          "additionalItems": false,
+          "items": {
+            "type": "object",
+            "properties": {
+              "customData": {
+                "type": "object",
+                "properties": {
+                  "vendorId": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "required": ["vendorId"]
+              },
+              "id": {
+                "type": "integer"
+              },
+              "startSchedule": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "duration": {
+                "type": "integer"
+              },
+              "chargingRateUnit": {
+                "type": "string",
+                "enum": ["W", "A"]
+              },
+              "chargingSchedulePeriod": {
+                "type": "array",
+                "additionalItems": false,
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "customData": {
+                      "type": "object",
+                      "properties": {
+                        "vendorId": {
+                          "type": "string",
+                          "maxLength": 255
+                        }
+                      },
+                      "required": ["vendorId"]
+                    },
+                    "startPeriod": {
+                      "type": "integer"
+                    },
+                    "limit": {
+                      "type": "number"
+                    },
+                    "numberPhases": {
+                      "type": "integer"
+                    },
+                    "phaseToUse": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": ["startPeriod", "limit"]
+                },
+                "minItems": 1,
+                "maxItems": 1024
+              },
+              "minChargingRate": {
+                "type": "number"
+              },
+              "salesTariff": {
+                "type": "object",
+                "properties": {
+                  "customData": {
+                    "type": "object",
+                    "properties": {
+                      "vendorId": {
+                        "type": "string",
+                        "maxLength": 255
+                      }
+                    },
+                    "required": ["vendorId"]
+                  },
+                  "id": {
+                    "type": "integer"
+                  },
+                  "salesTariffDescription": {
+                    "type": "string",
+                    "maxLength": 32
+                  },
+                  "numEPriceLevels": {
+                    "type": "integer"
+                  },
+                  "salesTariffEntry": {
+                    "type": "array",
+                    "additionalItems": false,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "customData": {
+                          "type": "object",
+                          "properties": {
+                            "vendorId": {
+                              "type": "string",
+                              "maxLength": 255
+                            }
+                          },
+                          "required": ["vendorId"]
+                        },
+                        "relativeTimeInterval": {
+                          "type": "object",
+                          "properties": {
+                            "customData": {
+                              "type": "object",
+                              "properties": {
+                                "vendorId": {
+                                  "type": "string",
+                                  "maxLength": 255
+                                }
+                              },
+                              "required": ["vendorId"]
+                            },
+                            "start": {
+                              "type": "integer"
+                            },
+                            "duration": {
+                              "type": "integer"
+                            }
+                          },
+                          "required": ["start"]
+                        },
+                        "ePriceLevel": {
+                          "type": "integer",
+                          "minimum": 0.0
+                        },
+                        "consumptionCost": {
+                          "type": "array",
+                          "additionalItems": false,
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "customData": {
+                                "type": "object",
+                                "properties": {
+                                  "vendorId": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  }
+                                },
+                                "required": ["vendorId"]
+                              },
+                              "startValue": {
+                                "type": "number"
+                              },
+                              "cost": {
+                                "type": "array",
+                                "additionalItems": false,
+                                "items": {
+                                  "type": "object",
+                                  "additionalProperties": false,
+                                  "properties": {
+                                    "customData": {
+                                      "type": "object",
+                                      "properties": {
+                                        "vendorId": {
+                                          "type": "string",
+                                          "maxLength": 255
+                                        }
+                                      },
+                                      "required": ["vendorId"]
+                                    },
+                                    "costKind": {
+                                      "type": "string",
+                                      "enum": [
+                                        "CarbonDioxideEmission",
+                                        "RelativePricePercentage",
+                                        "RenewableGenerationPercentage"
+                                      ]
+                                    },
+                                    "amount": {
+                                      "type": "integer"
+                                    },
+                                    "amountMultiplier": {
+                                      "type": "integer"
+                                    }
+                                  },
+                                  "required": ["costKind", "amount"]
+                                },
+                                "minItems": 1,
+                                "maxItems": 3
+                              }
+                            },
+                            "required": ["startValue", "cost"]
+                          },
+                          "minItems": 1,
+                          "maxItems": 3
+                        }
+                      },
+                      "required": ["relativeTimeInterval"]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1024
+                  }
+                },
+                "required": ["id", "salesTariffEntry"]
+              }
+            },
+            "required": ["id", "chargingRateUnit", "chargingSchedulePeriod"]
+          },
+          "minItems": 1,
+          "maxItems": 3
+        },
+        "transactionId": {
+          "type": "string",
+          "maxLength": 36
+        }
+      },
+      "required": ["id", "stackLevel", "chargingProfilePurpose", "chargingProfileKind", "chargingSchedule"]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["evseId", "chargingProfile"]
+}

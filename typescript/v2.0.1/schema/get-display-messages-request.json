@@ -1,0 +1,37 @@
+{
+  "title": "GetDisplayMessages Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "id": {
+      "type": "array",
+      "additionalItems": false,
+      "items": {
+        "type": "integer"
+      },
+      "minItems": 1
+    },
+    "requestId": {
+      "type": "integer"
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["AlwaysFront", "InFront", "NormalCycle"]
+    },
+    "state": {
+      "type": "string",
+      "enum": ["Charging", "Faulted", "Idle", "Unavailable"]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["requestId"]
+}

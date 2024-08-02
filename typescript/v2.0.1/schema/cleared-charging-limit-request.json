@@ -1,0 +1,25 @@
+{
+  "title": "ClearedChargingLimit Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "chargingLimitSource": {
+      "type": "string",
+      "enum": ["EMS", "Other", "SO", "CSO"]
+    },
+    "evseId": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["chargingLimitSource"]
+}

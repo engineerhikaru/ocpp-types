@@ -1,0 +1,46 @@
+{
+  "title": "TriggerMessage Response",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["Accepted", "Rejected", "NotImplemented"]
+    },
+    "statusInfo": {
+      "type": "object",
+      "properties": {
+        "customData": {
+          "type": "object",
+          "properties": {
+            "vendorId": {
+              "type": "string",
+              "maxLength": 255
+            }
+          },
+          "required": ["vendorId"]
+        },
+        "reasonCode": {
+          "type": "string",
+          "maxLength": 20
+        },
+        "additionalInfo": {
+          "type": "string",
+          "maxLength": 512
+        }
+      },
+      "required": ["reasonCode"]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["status"]
+}

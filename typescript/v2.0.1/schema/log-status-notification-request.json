@@ -1,0 +1,34 @@
+{
+  "title": "LogStatusNotification Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "BadMessage",
+        "Idle",
+        "NotSupportedOperation",
+        "PermissionDenied",
+        "Uploaded",
+        "UploadFailure",
+        "Uploading",
+        "AcceptedCanceled"
+      ]
+    },
+    "requestId": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["status"]
+}

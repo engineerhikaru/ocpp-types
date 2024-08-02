@@ -1,0 +1,44 @@
+{
+  "title": "ChangeAvailability Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "evse": {
+      "type": "object",
+      "properties": {
+        "customData": {
+          "type": "object",
+          "properties": {
+            "vendorId": {
+              "type": "string",
+              "maxLength": 255
+            }
+          },
+          "required": ["vendorId"]
+        },
+        "id": {
+          "type": "integer"
+        },
+        "connectorId": {
+          "type": "integer"
+        }
+      },
+      "required": ["id"]
+    },
+    "operationalStatus": {
+      "type": "string",
+      "enum": ["Inoperative", "Operative"]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["operationalStatus"]
+}

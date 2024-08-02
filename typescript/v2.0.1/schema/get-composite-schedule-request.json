@@ -1,0 +1,28 @@
+{
+  "title": "GetCompositeSchedule Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "duration": {
+      "type": "integer"
+    },
+    "chargingRateUnit": {
+      "type": "string",
+      "enum": ["W", "A"]
+    },
+    "evseId": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["duration", "evseId"]
+}

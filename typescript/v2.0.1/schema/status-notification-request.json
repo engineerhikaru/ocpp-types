@@ -1,0 +1,32 @@
+{
+  "title": "StatusNotification Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "connectorStatus": {
+      "type": "string",
+      "enum": ["Available", "Occupied", "Reserved", "Unavailable", "Faulted"]
+    },
+    "evseId": {
+      "type": "integer"
+    },
+    "connectorId": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["timestamp", "connectorStatus", "evseId", "connectorId"]
+}

@@ -1,0 +1,25 @@
+{
+  "title": "CostUpdated Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "totalCost": {
+      "type": "number"
+    },
+    "transactionId": {
+      "type": "string",
+      "maxLength": 36
+    }
+  },
+  "additionalProperties": false,
+  "required": ["totalCost", "transactionId"]
+}

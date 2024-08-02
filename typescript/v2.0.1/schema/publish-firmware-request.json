@@ -1,0 +1,35 @@
+{
+  "title": "PublishFirmware Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "location": {
+      "type": "string",
+      "maxLength": 512
+    },
+    "retries": {
+      "type": "integer"
+    },
+    "checksum": {
+      "type": "string",
+      "maxLength": 32
+    },
+    "requestId": {
+      "type": "integer"
+    },
+    "retryInterval": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["location", "checksum", "requestId"]
+}

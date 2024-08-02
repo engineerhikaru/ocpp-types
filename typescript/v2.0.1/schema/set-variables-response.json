@@ -1,0 +1,149 @@
+{
+  "title": "SetVariables Response",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "setVariableResult": {
+      "type": "array",
+      "additionalItems": false,
+      "items": {
+        "type": "object",
+        "properties": {
+          "customData": {
+            "type": "object",
+            "properties": {
+              "vendorId": {
+                "type": "string",
+                "maxLength": 255
+              }
+            },
+            "required": ["vendorId"]
+          },
+          "attributeType": {
+            "type": "string",
+            "default": "Actual",
+            "enum": ["Actual", "Target", "MinSet", "MaxSet"]
+          },
+          "attributeStatus": {
+            "type": "string",
+            "enum": [
+              "Accepted",
+              "Rejected",
+              "UnknownComponent",
+              "UnknownVariable",
+              "NotSupportedAttributeType",
+              "RebootRequired"
+            ]
+          },
+          "attributeStatusInfo": {
+            "type": "object",
+            "properties": {
+              "customData": {
+                "type": "object",
+                "properties": {
+                  "vendorId": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "required": ["vendorId"]
+              },
+              "reasonCode": {
+                "type": "string",
+                "maxLength": 20
+              },
+              "additionalInfo": {
+                "type": "string",
+                "maxLength": 512
+              }
+            },
+            "required": ["reasonCode"]
+          },
+          "component": {
+            "type": "object",
+            "properties": {
+              "customData": {
+                "type": "object",
+                "properties": {
+                  "vendorId": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "required": ["vendorId"]
+              },
+              "evse": {
+                "type": "object",
+                "properties": {
+                  "customData": {
+                    "type": "object",
+                    "properties": {
+                      "vendorId": {
+                        "type": "string",
+                        "maxLength": 255
+                      }
+                    },
+                    "required": ["vendorId"]
+                  },
+                  "id": {
+                    "type": "integer"
+                  },
+                  "connectorId": {
+                    "type": "integer"
+                  }
+                },
+                "required": ["id"]
+              },
+              "name": {
+                "type": "string",
+                "maxLength": 50
+              },
+              "instance": {
+                "type": "string",
+                "maxLength": 50
+              }
+            },
+            "required": ["name"]
+          },
+          "variable": {
+            "type": "object",
+            "properties": {
+              "customData": {
+                "type": "object",
+                "properties": {
+                  "vendorId": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "required": ["vendorId"]
+              },
+              "name": {
+                "type": "string",
+                "maxLength": 50
+              },
+              "instance": {
+                "type": "string",
+                "maxLength": 50
+              }
+            },
+            "required": ["name"]
+          }
+        },
+        "required": ["attributeStatus", "component", "variable"]
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false,
+  "required": ["setVariableResult"]
+}

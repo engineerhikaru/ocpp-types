@@ -1,0 +1,24 @@
+{
+  "title": "UnlockConnector Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "evseId": {
+      "type": "integer"
+    },
+    "connectorId": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["evseId", "connectorId"]
+}

@@ -1,0 +1,54 @@
+{
+  "title": "GetCertificateStatus Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "ocspRequestData": {
+      "type": "object",
+      "properties": {
+        "customData": {
+          "type": "object",
+          "properties": {
+            "vendorId": {
+              "type": "string",
+              "maxLength": 255
+            }
+          },
+          "required": ["vendorId"]
+        },
+        "hashAlgorithm": {
+          "type": "string",
+          "enum": ["SHA256", "SHA384", "SHA512"]
+        },
+        "issuerNameHash": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "issuerKeyHash": {
+          "type": "string",
+          "maxLength": 128
+        },
+        "serialNumber": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "responderURL": {
+          "type": "string",
+          "maxLength": 512
+        }
+      },
+      "required": ["hashAlgorithm", "issuerNameHash", "issuerKeyHash", "serialNumber", "responderURL"]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["ocspRequestData"]
+}

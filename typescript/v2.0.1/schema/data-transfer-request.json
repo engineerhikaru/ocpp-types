@@ -1,0 +1,24 @@
+{
+  "title": "DataTransfer Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "messageId": { "type": "string", "maxLength": 50 },
+    "data": {},
+    "vendorId": {
+      "type": "string",
+      "maxLength": 255
+    }
+  },
+  "additionalProperties": false,
+  "required": ["vendorId"]
+}

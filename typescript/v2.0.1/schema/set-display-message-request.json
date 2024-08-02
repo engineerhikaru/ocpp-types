@@ -1,0 +1,131 @@
+{
+  "title": "SetDisplayMessage Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "message": {
+      "type": "object",
+      "properties": {
+        "customData": {
+          "type": "object",
+          "properties": {
+            "vendorId": {
+              "type": "string",
+              "maxLength": 255
+            }
+          },
+          "required": ["vendorId"]
+        },
+        "display": {
+          "type": "object",
+          "properties": {
+            "customData": {
+              "type": "object",
+              "properties": {
+                "vendorId": {
+                  "type": "string",
+                  "maxLength": 255
+                }
+              },
+              "required": ["vendorId"]
+            },
+            "evse": {
+              "type": "object",
+              "properties": {
+                "customData": {
+                  "type": "object",
+                  "properties": {
+                    "vendorId": {
+                      "type": "string",
+                      "maxLength": 255
+                    }
+                  },
+                  "required": ["vendorId"]
+                },
+                "id": {
+                  "type": "integer"
+                },
+                "connectorId": {
+                  "type": "integer"
+                }
+              },
+              "required": ["id"]
+            },
+            "name": {
+              "type": "string",
+              "maxLength": 50
+            },
+            "instance": {
+              "type": "string",
+              "maxLength": 50
+            }
+          },
+          "required": ["name"]
+        },
+        "id": {
+          "type": "integer"
+        },
+        "priority": {
+          "type": "string",
+          "enum": ["AlwaysFront", "InFront", "NormalCycle"]
+        },
+        "state": {
+          "type": "string",
+          "enum": ["Charging", "Faulted", "Idle", "Unavailable"]
+        },
+        "startDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "endDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "transactionId": {
+          "type": "string",
+          "maxLength": 36
+        },
+        "message": {
+          "type": "object",
+          "properties": {
+            "customData": {
+              "type": "object",
+              "properties": {
+                "vendorId": {
+                  "type": "string",
+                  "maxLength": 255
+                }
+              },
+              "required": ["vendorId"]
+            },
+            "format": {
+              "type": "string",
+              "enum": ["ASCII", "HTML", "URI", "UTF8"]
+            },
+            "language": {
+              "type": "string",
+              "maxLength": 8
+            },
+            "content": {
+              "type": "string",
+              "maxLength": 512
+            }
+          },
+          "required": ["format", "content"]
+        }
+      },
+      "required": ["id", "priority", "message"]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["message"]
+}

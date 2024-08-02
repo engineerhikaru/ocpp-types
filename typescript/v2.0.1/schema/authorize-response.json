@@ -1,0 +1,160 @@
+{
+  "title": "Authorize Response",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "idTokenInfo": {
+      "type": "object",
+      "properties": {
+        "customData": {
+          "type": "object",
+          "properties": {
+            "vendorId": {
+              "type": "string",
+              "maxLength": 255
+            }
+          },
+          "required": ["vendorId"]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "Accepted",
+            "Blocked",
+            "ConcurrentTx",
+            "Expired",
+            "Invalid",
+            "NoCredit",
+            "NotAllowedTypeEVSE",
+            "NotAtThisLocation",
+            "NotAtThisTime",
+            "Unknown"
+          ]
+        },
+        "cacheExpiryDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "chargingPriority": {
+          "type": "integer"
+        },
+        "language1": { "type": "string", "maxLength": 8 },
+        "evseId": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 1
+        },
+        "groupIdToken": {
+          "type": "object",
+          "properties": {
+            "customData": {
+              "type": "object",
+              "properties": {
+                "vendorId": {
+                  "type": "string",
+                  "maxLength": 255
+                }
+              },
+              "required": ["vendorId"]
+            },
+            "additionalInfo": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "customData": {
+                    "type": "object",
+                    "properties": {
+                      "vendorId": {
+                        "type": "string",
+                        "maxLength": 255
+                      }
+                    },
+                    "required": ["vendorId"]
+                  },
+                  "additionalIdToken": {
+                    "type": "string",
+                    "maxLength": 36
+                  },
+                  "type": {
+                    "type": "string",
+                    "maxLength": 50
+                  }
+                },
+                "required": ["additionalIdToken", "type"]
+              },
+              "minItems": 1
+            },
+            "idToken": {
+              "type": "string",
+              "maxLength": 36
+            },
+            "type": {
+              "type": "string",
+              "enum": ["Central", "eMAID", "ISO14443", "ISO15693", "KeyCode", "Local", "MacAddress", "NoAuthorization"]
+            }
+          },
+          "required": ["idToken", "type"]
+        },
+        "language2": {
+          "type": "string",
+          "maxLength": 8
+        },
+        "personalMessage": {
+          "type": "object",
+          "properties": {
+            "customData": {
+              "type": "object",
+              "properties": {
+                "vendorId": {
+                  "type": "string",
+                  "maxLength": 255
+                }
+              },
+              "required": ["vendorId"]
+            },
+            "format": {
+              "type": "string",
+              "enum": ["ASCII", "HTML", "URI", "UTF8"]
+            },
+            "language": {
+              "type": "string",
+              "maxLength": 8
+            },
+            "content": {
+              "type": "string",
+              "maxLength": 512
+            }
+          },
+          "required": ["format", "content"]
+        }
+      },
+      "required": ["status"]
+    },
+    "certificateStatus": {
+      "type": "string",
+      "enum": [
+        "Accepted",
+        "SignatureError",
+        "CertificateExpired",
+        "CertificateRevoked",
+        "NoCertificateAvailable",
+        "CertChainError",
+        "ContractCancelled"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["idTokenInfo"]
+}

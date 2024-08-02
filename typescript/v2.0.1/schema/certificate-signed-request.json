@@ -1,0 +1,26 @@
+{
+  "title": "CertificateSigned Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "certificateChain": {
+      "type": "string",
+      "maxLength": 10000
+    },
+    "certificateType": {
+      "type": "string",
+      "enum": ["ChargingStationCertificate", "V2GCertificate"]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["certificateChain"]
+}

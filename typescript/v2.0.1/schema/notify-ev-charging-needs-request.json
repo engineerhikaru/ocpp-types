@@ -1,0 +1,122 @@
+{
+  "title": "NotifyEVChargingNeeds Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "maxScheduleTuples": {
+      "type": "integer"
+    },
+    "chargingNeeds": {
+      "type": "object",
+      "properties": {
+        "customData": {
+          "type": "object",
+          "properties": {
+            "vendorId": {
+              "type": "string",
+              "maxLength": 255
+            }
+          },
+          "required": ["vendorId"]
+        },
+        "acChargingParameters": {
+          "type": "object",
+          "properties": {
+            "customData": {
+              "type": "object",
+              "properties": {
+                "vendorId": {
+                  "type": "string",
+                  "maxLength": 255
+                }
+              },
+              "required": ["vendorId"]
+            },
+            "energyAmount": {
+              "type": "integer"
+            },
+            "evMinCurrent": {
+              "type": "integer"
+            },
+            "evMaxCurrent": {
+              "type": "integer"
+            },
+            "evMaxVoltage": {
+              "type": "integer"
+            }
+          },
+          "required": ["energyAmount", "evMinCurrent", "evMaxCurrent", "evMaxVoltage"]
+        },
+        "dcChargingParameters": {
+          "type": "object",
+          "properties": {
+            "customData": {
+              "type": "object",
+              "properties": {
+                "vendorId": {
+                  "type": "string",
+                  "maxLength": 255
+                }
+              },
+              "required": ["vendorId"]
+            },
+            "evMaxCurrent": {
+              "type": "integer"
+            },
+            "evMaxVoltage": {
+              "type": "integer"
+            },
+            "energyAmount": {
+              "type": "integer"
+            },
+            "evMaxPower": {
+              "type": "integer"
+            },
+            "stateOfCharge": {
+              "type": "integer",
+              "minimum": 0.0,
+              "maximum": 100.0
+            },
+            "evEnergyCapacity": {
+              "type": "integer"
+            },
+            "fullSoC": {
+              "type": "integer",
+              "minimum": 0.0,
+              "maximum": 100.0
+            },
+            "bulkSoC": {
+              "type": "integer",
+              "minimum": 0.0,
+              "maximum": 100.0
+            }
+          },
+          "required": ["evMaxCurrent", "evMaxVoltage"]
+        },
+        "requestedEnergyTransfer": {
+          "type": "string",
+          "enum": ["DC", "AC_single_phase", "AC_two_phase", "AC_three_phase"]
+        },
+        "departureTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["requestedEnergyTransfer"]
+    },
+    "evseId": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["evseId", "chargingNeeds"]
+}

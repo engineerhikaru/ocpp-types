@@ -1,0 +1,36 @@
+{
+  "title": "NotifyCustomerInformation Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "data": {
+      "type": "string",
+      "maxLength": 512
+    },
+    "tbc": {
+      "type": "boolean",
+      "default": false
+    },
+    "seqNo": {
+      "type": "integer"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "requestId": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["data", "seqNo", "generatedAt", "requestId"]
+}

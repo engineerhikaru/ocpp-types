@@ -1,0 +1,147 @@
+{
+  "title": "GetInstalledCertificateIds Response",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["Accepted", "NotFound"]
+    },
+    "statusInfo": {
+      "type": "object",
+      "properties": {
+        "customData": {
+          "type": "object",
+          "properties": {
+            "vendorId": {
+              "type": "string",
+              "maxLength": 255
+            }
+          },
+          "required": ["vendorId"]
+        },
+        "reasonCode": {
+          "type": "string",
+          "maxLength": 20
+        },
+        "additionalInfo": {
+          "type": "string",
+          "maxLength": 512
+        }
+      },
+      "required": ["reasonCode"]
+    },
+    "certificateHashDataChain": {
+      "type": "array",
+      "additionalItems": false,
+      "items": {
+        "type": "object",
+        "properties": {
+          "customData": {
+            "type": "object",
+            "properties": {
+              "vendorId": {
+                "type": "string",
+                "maxLength": 255
+              }
+            },
+            "required": ["vendorId"]
+          },
+          "certificateHashData": {
+            "type": "object",
+            "properties": {
+              "customData": {
+                "type": "object",
+                "properties": {
+                  "vendorId": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "required": ["vendorId"]
+              },
+              "hashAlgorithm": {
+                "type": "string",
+                "enum": ["SHA256", "SHA384", "SHA512"]
+              },
+              "issuerNameHash": {
+                "type": "string",
+                "maxLength": 128
+              },
+              "issuerKeyHash": {
+                "type": "string",
+                "maxLength": 128
+              },
+              "serialNumber": {
+                "type": "string",
+                "maxLength": 40
+              }
+            },
+            "required": ["hashAlgorithm", "issuerNameHash", "issuerKeyHash", "serialNumber"]
+          },
+          "certificateType": {
+            "type": "string",
+            "enum": [
+              "V2GRootCertificate",
+              "MORootCertificate",
+              "CSMSRootCertificate",
+              "V2GCertificateChain",
+              "ManufacturerRootCertificate"
+            ]
+          },
+          "childCertificateHashData": {
+            "type": "array",
+            "additionalItems": false,
+            "items": {
+              "type": "object",
+              "properties": {
+                "customData": {
+                  "type": "object",
+                  "properties": {
+                    "vendorId": {
+                      "type": "string",
+                      "maxLength": 255
+                    }
+                  },
+                  "required": ["vendorId"]
+                },
+                "hashAlgorithm": {
+                  "type": "string",
+                  "enum": ["SHA256", "SHA384", "SHA512"]
+                },
+                "issuerNameHash": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "issuerKeyHash": {
+                  "type": "string",
+                  "maxLength": 128
+                },
+                "serialNumber": {
+                  "type": "string",
+                  "maxLength": 40
+                }
+              },
+              "required": ["hashAlgorithm", "issuerNameHash", "issuerKeyHash", "serialNumber"]
+            },
+            "minItems": 1,
+            "maxItems": 4
+          }
+        },
+        "required": ["certificateType", "certificateHashData"]
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false,
+  "required": ["status"]
+}

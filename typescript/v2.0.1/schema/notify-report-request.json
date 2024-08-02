@@ -1,0 +1,212 @@
+{
+  "title": "NotifyReport Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "requestId": {
+      "type": "integer"
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "reportData": {
+      "type": "array",
+      "additionalItems": false,
+      "items": {
+        "type": "object",
+        "properties": {
+          "customData": {
+            "type": "object",
+            "properties": {
+              "vendorId": {
+                "type": "string",
+                "maxLength": 255
+              }
+            },
+            "required": ["vendorId"]
+          },
+          "component": {
+            "type": "object",
+            "properties": {
+              "customData": {
+                "type": "object",
+                "properties": {
+                  "vendorId": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "required": ["vendorId"]
+              },
+              "evse": {
+                "type": "object",
+                "properties": {
+                  "customData": {
+                    "type": "object",
+                    "properties": {
+                      "vendorId": {
+                        "type": "string",
+                        "maxLength": 255
+                      }
+                    },
+                    "required": ["vendorId"]
+                  },
+                  "id": {
+                    "type": "integer"
+                  },
+                  "connectorId": {
+                    "type": "integer"
+                  }
+                },
+                "required": ["id"]
+              },
+              "name": {
+                "type": "string",
+                "maxLength": 50
+              },
+              "instance": {
+                "type": "string",
+                "maxLength": 50
+              }
+            },
+            "required": ["name"]
+          },
+          "variable": {
+            "type": "object",
+            "properties": {
+              "customData": {
+                "type": "object",
+                "properties": {
+                  "vendorId": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "required": ["vendorId"]
+              },
+              "name": {
+                "type": "string",
+                "maxLength": 50
+              },
+              "instance": {
+                "type": "string",
+                "maxLength": 50
+              }
+            },
+            "required": ["name"]
+          },
+          "variableAttribute": {
+            "type": "array",
+            "additionalItems": false,
+            "items": {
+              "type": "object",
+              "properties": {
+                "customData": {
+                  "type": "object",
+                  "properties": {
+                    "vendorId": {
+                      "type": "string",
+                      "maxLength": 255
+                    }
+                  },
+                  "required": ["vendorId"]
+                },
+                "type": {
+                  "type": "string",
+                  "default": "Actual",
+                  "enum": ["Actual", "Target", "MinSet", "MaxSet"]
+                },
+                "value": {
+                  "type": "string",
+                  "maxLength": 2500
+                },
+                "mutability": {
+                  "type": "string",
+                  "default": "ReadWrite",
+                  "enum": ["ReadOnly", "WriteOnly", "ReadWrite"]
+                },
+                "persistent": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "constant": {
+                  "type": "boolean",
+                  "default": false
+                }
+              }
+            },
+            "minItems": 1,
+            "maxItems": 4
+          },
+          "variableCharacteristics": {
+            "type": "object",
+            "properties": {
+              "customData": {
+                "type": "object",
+                "properties": {
+                  "vendorId": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "required": ["vendorId"]
+              },
+              "unit": {
+                "type": "string",
+                "maxLength": 16
+              },
+              "dataType": {
+                "type": "string",
+                "enum": [
+                  "string",
+                  "decimal",
+                  "integer",
+                  "dateTime",
+                  "boolean",
+                  "OptionList",
+                  "SequenceList",
+                  "MemberList"
+                ]
+              },
+              "minLimit": {
+                "type": "number"
+              },
+              "maxLimit": {
+                "type": "number"
+              },
+              "valuesList": {
+                "type": "string",
+                "maxLength": 1000
+              },
+              "supportsMonitoring": {
+                "type": "boolean"
+              }
+            },
+            "required": ["dataType", "supportsMonitoring"]
+          }
+        },
+        "required": ["component", "variable", "variableAttribute"]
+      },
+      "minItems": 1
+    },
+    "tbc": {
+      "type": "boolean",
+      "default": false
+    },
+    "seqNo": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["requestId", "generatedAt", "seqNo"]
+}

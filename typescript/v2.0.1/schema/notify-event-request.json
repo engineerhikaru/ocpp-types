@@ -1,0 +1,160 @@
+{
+  "title": "NotifyEvent Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "generatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "tbc": {
+      "type": "boolean",
+      "default": false
+    },
+    "seqNo": {
+      "type": "integer"
+    },
+    "eventData": {
+      "type": "array",
+      "additionalItems": false,
+      "items": {
+        "type": "object",
+        "properties": {
+          "customData": {
+            "type": "object",
+            "properties": {
+              "vendorId": {
+                "type": "string",
+                "maxLength": 255
+              }
+            },
+            "required": ["vendorId"]
+          },
+          "eventId": {
+            "type": "integer"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "trigger": {
+            "type": "string",
+            "enum": ["Alerting", "Delta", "Periodic"]
+          },
+          "cause": {
+            "type": "integer"
+          },
+          "actualValue": {
+            "type": "string",
+            "maxLength": 2500
+          },
+          "techCode": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "techInfo": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "cleared": {
+            "type": "boolean"
+          },
+          "transactionId": {
+            "type": "string",
+            "maxLength": 36
+          },
+          "component": {
+            "type": "object",
+            "properties": {
+              "customData": {
+                "type": "object",
+                "properties": {
+                  "vendorId": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "required": ["vendorId"]
+              },
+              "evse": {
+                "type": "object",
+                "properties": {
+                  "customData": {
+                    "type": "object",
+                    "properties": {
+                      "vendorId": {
+                        "type": "string",
+                        "maxLength": 255
+                      }
+                    },
+                    "required": ["vendorId"]
+                  },
+                  "id": {
+                    "type": "integer"
+                  },
+                  "connectorId": {
+                    "type": "integer"
+                  }
+                },
+                "required": ["id"]
+              },
+              "name": {
+                "type": "string",
+                "maxLength": 50
+              },
+              "instance": {
+                "type": "string",
+                "maxLength": 50
+              }
+            },
+            "required": ["name"]
+          },
+          "variableMonitoringId": {
+            "type": "integer"
+          },
+          "eventNotificationType": {
+            "type": "string",
+            "enum": ["HardWiredNotification", "HardWiredMonitor", "PreconfiguredMonitor", "CustomMonitor"]
+          },
+          "variable": {
+            "type": "object",
+            "properties": {
+              "customData": {
+                "type": "object",
+                "properties": {
+                  "vendorId": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "required": ["vendorId"]
+              },
+              "name": {
+                "type": "string",
+                "maxLength": 50
+              },
+              "instance": {
+                "type": "string",
+                "maxLength": 50
+              }
+            },
+            "required": ["name"]
+          }
+        },
+        "required": ["eventId", "timestamp", "trigger", "actualValue", "eventNotificationType", "component", "variable"]
+      },
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false,
+  "required": ["generatedAt", "seqNo", "eventData"]
+}

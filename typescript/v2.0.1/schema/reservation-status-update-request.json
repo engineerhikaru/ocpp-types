@@ -1,0 +1,25 @@
+{
+  "title": "ReservationStatusUpdate Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "reservationId": {
+      "type": "integer"
+    },
+    "reservationUpdateStatus": {
+      "type": "string",
+      "enum": ["Expired", "Removed"]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["reservationId", "reservationUpdateStatus"]
+}

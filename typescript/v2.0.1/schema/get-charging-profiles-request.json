@@ -1,0 +1,64 @@
+{
+  "title": "GetChargingProfiles Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "requestId": {
+      "type": "integer"
+    },
+    "evseId": {
+      "type": "integer"
+    },
+    "chargingProfile": {
+      "type": "object",
+      "properties": {
+        "customData": {
+          "type": "object",
+          "properties": {
+            "vendorId": {
+              "type": "string",
+              "maxLength": 255
+            }
+          },
+          "required": ["vendorId"]
+        },
+        "chargingProfilePurpose": {
+          "type": "string",
+          "enum": ["ChargingStationExternalConstraints", "ChargingStationMaxProfile", "TxDefaultProfile", "TxProfile"]
+        },
+        "stackLevel": {
+          "type": "integer"
+        },
+        "chargingProfileId": {
+          "type": "array",
+          "additionalItems": false,
+          "items": {
+            "type": "integer"
+          },
+          "minItems": 1
+        },
+        "chargingLimitSource": {
+          "type": "array",
+          "additionalItems": false,
+          "items": {
+            "type": "string",
+            "enum": ["EMS", "Other", "SO", "CSO"]
+          },
+          "minItems": 1,
+          "maxItems": 4
+        }
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": ["requestId", "chargingProfile"]
+}

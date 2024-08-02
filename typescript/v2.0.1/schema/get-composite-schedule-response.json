@@ -1,0 +1,106 @@
+{
+  "title": "GetCompositeSchedule Response",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["Accepted", "Rejected"]
+    },
+    "statusInfo": {
+      "type": "object",
+      "properties": {
+        "customData": {
+          "type": "object",
+          "properties": {
+            "vendorId": {
+              "type": "string",
+              "maxLength": 255
+            }
+          },
+          "required": ["vendorId"]
+        },
+        "reasonCode": { "type": "string", "maxLength": 20 },
+        "additionalInfo": {
+          "type": "string",
+          "maxLength": 512
+        }
+      },
+      "required": ["reasonCode"]
+    },
+    "schedule": {
+      "type": "object",
+      "properties": {
+        "customData": {
+          "type": "object",
+          "properties": {
+            "vendorId": {
+              "type": "string",
+              "maxLength": 255
+            }
+          },
+          "required": ["vendorId"]
+        },
+        "chargingSchedulePeriod": {
+          "type": "array",
+          "additionalItems": false,
+          "items": {
+            "type": "object",
+            "properties": {
+              "customData": {
+                "type": "object",
+                "properties": {
+                  "vendorId": {
+                    "type": "string",
+                    "maxLength": 255
+                  }
+                },
+                "required": ["vendorId"]
+              },
+              "startPeriod": {
+                "type": "integer"
+              },
+              "limit": {
+                "type": "number"
+              },
+              "numberPhases": {
+                "type": "integer"
+              },
+              "phaseToUse": {
+                "type": "integer"
+              }
+            },
+            "required": ["startPeriod", "limit"]
+          },
+          "minItems": 1
+        },
+        "evseId": {
+          "type": "integer"
+        },
+        "duration": {
+          "type": "integer"
+        },
+        "scheduleStart": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "chargingRateUnit": {
+          "type": "string",
+          "enum": ["W", "A"]
+        }
+      },
+      "required": ["evseId", "duration", "scheduleStart", "chargingRateUnit", "chargingSchedulePeriod"]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["status"]
+}

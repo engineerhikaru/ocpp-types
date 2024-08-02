@@ -1,0 +1,21 @@
+{
+  "title": "GetTransactionStatus Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "transactionId": {
+      "type": "string",
+      "maxLength": 36
+    }
+  },
+  "additionalProperties": false
+}

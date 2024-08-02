@@ -1,0 +1,25 @@
+{
+  "title": "Reset Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "type": {
+      "type": "string",
+      "enum": ["Immediate", "OnIdle"]
+    },
+    "evseId": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["type"]
+}

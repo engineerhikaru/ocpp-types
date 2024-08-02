@@ -1,0 +1,45 @@
+{
+  "title": "PublishFirmwareStatusNotification Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Idle",
+        "DownloadScheduled",
+        "Downloading",
+        "Downloaded",
+        "Published",
+        "DownloadFailed",
+        "DownloadPaused",
+        "InvalidChecksum",
+        "ChecksumVerified",
+        "PublishFailed"
+      ]
+    },
+    "location": {
+      "type": "array",
+      "additionalItems": false,
+      "items": {
+        "type": "string",
+        "maxLength": 512
+      },
+      "minItems": 1
+    },
+    "requestId": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["status"]
+}

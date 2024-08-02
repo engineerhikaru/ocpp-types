@@ -1,0 +1,45 @@
+{
+  "title": "ClearChargingProfile Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "chargingProfileId": {
+      "type": "integer"
+    },
+    "chargingProfileCriteria": {
+      "type": "object",
+      "properties": {
+        "customData": {
+          "type": "object",
+          "properties": {
+            "vendorId": {
+              "type": "string",
+              "maxLength": 255
+            }
+          },
+          "required": ["vendorId"]
+        },
+        "evseId": {
+          "type": "integer"
+        },
+        "chargingProfilePurpose": {
+          "type": "string",
+          "enum": ["ChargingStationExternalConstraints", "ChargingStationMaxProfile", "TxDefaultProfile", "TxProfile"]
+        },
+        "stackLevel": {
+          "type": "integer"
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

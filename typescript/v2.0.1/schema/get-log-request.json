@@ -1,0 +1,59 @@
+{
+  "title": "GetLog Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "log": {
+      "type": "object",
+      "properties": {
+        "customData": {
+          "type": "object",
+          "properties": {
+            "vendorId": {
+              "type": "string",
+              "maxLength": 255
+            }
+          },
+          "required": ["vendorId"]
+        },
+        "remoteLocation": {
+          "type": "string",
+          "maxLength": 512
+        },
+        "oldestTimestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "latestTimestamp": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["remoteLocation"]
+    },
+    "logType": {
+      "type": "string",
+      "enum": ["DiagnosticsLog", "SecurityLog"]
+    },
+    "requestId": {
+      "type": "integer"
+    },
+    "retries": {
+      "type": "integer"
+    },
+    "retryInterval": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["logType", "requestId", "log"]
+}

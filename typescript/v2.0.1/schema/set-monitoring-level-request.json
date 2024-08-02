@@ -1,0 +1,21 @@
+{
+  "title": "SetMonitoringLevel Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "severity": {
+      "type": "integer"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["severity"]
+}

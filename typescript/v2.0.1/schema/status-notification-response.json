@@ -1,0 +1,17 @@
+{
+  "title": "StatusNotification Response",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    }
+  },
+  "additionalProperties": false
+}

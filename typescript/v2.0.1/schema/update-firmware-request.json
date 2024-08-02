@@ -1,0 +1,63 @@
+{
+  "title": "UpdateFirmware Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "retries": {
+      "type": "integer"
+    },
+    "retryInterval": {
+      "type": "integer"
+    },
+    "requestId": {
+      "type": "integer"
+    },
+    "firmware": {
+      "type": "object",
+      "properties": {
+        "customData": {
+          "type": "object",
+          "properties": {
+            "vendorId": {
+              "type": "string",
+              "maxLength": 255
+            }
+          },
+          "required": ["vendorId"]
+        },
+        "location": {
+          "type": "string",
+          "maxLength": 512
+        },
+        "retrieveDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "installDateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "signingCertificate": {
+          "type": "string",
+          "maxLength": 5500
+        },
+        "signature": {
+          "type": "string",
+          "maxLength": 800
+        }
+      },
+      "required": ["location", "retrieveDateTime"]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["requestId", "firmware"]
+}

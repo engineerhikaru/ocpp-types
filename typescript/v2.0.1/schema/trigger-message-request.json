@@ -1,0 +1,56 @@
+{
+  "title": "TriggerMessage Request",
+  "type": "object",
+  "properties": {
+    "customData": {
+      "type": "object",
+      "properties": {
+        "vendorId": {
+          "type": "string",
+          "maxLength": 255
+        }
+      },
+      "required": ["vendorId"]
+    },
+    "evse": {
+      "type": "object",
+      "properties": {
+        "customData": {
+          "type": "object",
+          "properties": {
+            "vendorId": {
+              "type": "string",
+              "maxLength": 255
+            }
+          },
+          "required": ["vendorId"]
+        },
+        "id": {
+          "type": "integer"
+        },
+        "connectorId": {
+          "type": "integer"
+        }
+      },
+      "required": ["id"]
+    },
+    "requestedMessage": {
+      "type": "string",
+      "enum": [
+        "BootNotification",
+        "LogStatusNotification",
+        "FirmwareStatusNotification",
+        "Heartbeat",
+        "MeterValues",
+        "SignChargingStationCertificate",
+        "SignV2GCertificate",
+        "StatusNotification",
+        "TransactionEvent",
+        "SignCombinedCertificate",
+        "PublishFirmwareStatusNotification"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["requestedMessage"]
+}
